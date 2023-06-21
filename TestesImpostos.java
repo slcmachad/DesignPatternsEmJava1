@@ -2,15 +2,16 @@ package loja;
 
 import java.math.BigDecimal;
 
-import loja.imposto.CalculadoraDeImpostos;
-import loja.imposto.ISS;
+import loja.desconto.CalculadoraDeDescontos;
 import loja.orcamento.Orcamento;
 
 public class TestesImpostos {
 
 	public static void main(String[] args) {
-		Orcamento orcamento = new Orcamento(new BigDecimal("1000"));
-		CalculadoraDeImpostos calculadora = new CalculadoraDeImpostos();
-		System.out.println(calculadora.calcular(orcamento, new ISS()));
+		Orcamento primeiro = new Orcamento(new BigDecimal("100"), 6);
+		Orcamento segundo = new Orcamento(new BigDecimal("1000"), 2);
+		CalculadoraDeDescontos calculadora = new CalculadoraDeDescontos();
+		System.out.println(calculadora.calcular(primeiro));
+		System.out.println(calculadora.calcular(segundo)); 
 	}
 }
