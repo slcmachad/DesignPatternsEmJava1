@@ -6,10 +6,10 @@ import loja.orcamento.Orcamento;
 
 public class CalculadoraDeDescontos {
 	public BigDecimal calcular(Orcamento orcamento) {
-		Desconto desconto = 
+		Desconto cadeiaDeDescontos = 
 				new DescontoParaMaisDeCincoItens(
 						new DescontoPorValor(new SemDesconto()));
 		
-		return desconto.calcular(orcamento);
+		return cadeiaDeDescontos.calcular(orcamento);
 	}
 }
