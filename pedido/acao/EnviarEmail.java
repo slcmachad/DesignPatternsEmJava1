@@ -2,9 +2,9 @@ package loja.pedido.acao;
 
 import loja.pedido.Pedido;
 
-public class EnviarEmail {
+public class EnviarEmail implements AcaoAposPedido{
 	
-	public void executar(Pedido pedido) {
+	public void executarAcao(Pedido pedido) {
 		System.out.println("enviando email com dados do pedido");
 	}
 }
