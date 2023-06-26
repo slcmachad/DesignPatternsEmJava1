@@ -1,25 +1,28 @@
 package loja.pedido;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import loja.orcamento.ItemOrcamento;
 import loja.orcamento.Orcamento;
 import loja.pedido.acao.AcaoAposPedido;
 
 public class GeraPedidoHandler {
 	
-	private List<AcaoAposPedido> acoes;
+	private List<AcaoAposPedido> acao;
 	
 	public GeraPedidoHandler(List<AcaoAposPedido> acoes) {
-		this.acoes = acoes;
+		acao = acoes;
 	}
 
-	public void execute(GeraPedido dados) {
+	public void execute(GeraPedido gerarPedido) {
 
-		Orcamento orcamento = new Orcamento(dados.getValorOrcamento(), dados.getQuantidadeDeItens());
+		Orcamento orcamento = new Orcamento();
+		orcamento.adicionarItem(new ItemOrcamento(new BigDecimal("200")));
 		
-		Pedido pedido = new Pedido(dados.getCliente(), LocalDateTime.now(), orcamento);
+		Pedido pedido = new Pedido(gerarPedido.getCliente(), LocalDateTime.now(), orcamento);
 		
-		acoes.forEach(a -> a.executarAcao(pedido));
+		this.acao.forEach(a -> a.executarAcao(pedido));
 	}
 }
