@@ -6,6 +6,7 @@ import java.util.Arrays;
 import loja.pedido.GeraPedido;
 import loja.pedido.GeraPedidoHandler;
 import loja.pedido.acao.EnviarEmail;
+import loja.pedido.acao.LogDePedido;
 import loja.pedido.acao.SalvarNoBancoDeDados;
 
 public class TestesPedidos {
@@ -18,7 +19,8 @@ public class TestesPedidos {
 		GeraPedidoHandler handler = new GeraPedidoHandler(
 				Arrays.asList(
 						new SalvarNoBancoDeDados(), 
-						new EnviarEmail()						
+						new EnviarEmail(),
+						new LogDePedido()
 						)
 				);
 		handler.execute(gerador);
